@@ -473,7 +473,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908603259507755184, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859262209467780149, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859262209467780149, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859262209467780149, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 153060623}
+    - target: {fileID: 6859262209467780149, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859262209467780149, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859262209467780149, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859262209467780149, guid: 35a2a21a2dbc0034a973e9a5efe6927d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -998,7 +1026,7 @@ GameObject:
   - component: {fileID: 1157972860}
   - component: {fileID: 1157972859}
   m_Layer: 5
-  m_Name: Event3
+  m_Name: Board Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

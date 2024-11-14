@@ -7,33 +7,38 @@ using System;
 
 public class Map : MonoBehaviour
 {
-    public string apiKey;
-    public float lat = -33.85660618894087f;
-    public float lon = 151.21500701957325f;
-    public int zoom = 12;
+    public string accessToken;
+    public float centerLatitude = -33.8873f;
+    public float centerLongitude = 151.2189f;
+    public float zoom = 12.0f;
+    public int bearing = 0;
+    public int pitch = 0;
+    public enum style {Light, Dark, Streets, Outdoors, Satellite, SatelliteStreets};
+    public style mapStyle = style.Streets;
     public enum resolution { low = 1, high = 2 };
     public resolution mapResolution = resolution.low;
-    public enum type { roadmap, satellite, gybrid, terrain };
-    public type mapType = type.roadmap;
-    private string url = "";
-    private int mapWidth = 640;
-    private int mapHeight = 640;
-    private bool mapIsLoading = false; //not used. Can be used to know that the map is loading 
-    private Rect rect;
 
-    private string apiKeyLast;
-    private float latLast = -33.85660618894087f;
-    private float lonLast = 151.21500701957325f;
-    private int zoomLast = 12;
-    private resolution mapResolutionLast = resolution.low;
-    private type mapTypeLast = type.roadmap;
+    private int mapWidth = 800;
+    private int mapHeight = 600;
+    private string[] styleStr = new string[] { "light-v10", "dark-v10", "streets-v11", "outdoors-v11", "satellite-v9", "satellite-streets-v11" };
+    private string url = "";
+    private bool mapIsLoading = false; 
+    private Rect rect;
     private bool updateMap = true;
 
+    private string accessTokenLast;
+    private float centerLatitudeLast = -33.8873f;
+    private float centerLongitudeLast = 151.2189f;
+    private float zoomLast = 12.0f;
+    private int bearingLast = 0;
+    private int pitchLast = 0;
+    private style mapStyleLast = style.Streets;
+    private resolution mapResolutionLast = resolution.low;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(GetGoogleMap());
+        StartCoroutine(GetMapbox());
         rect = gameObject.GetComponent<RawImage>().rectTransform.rect;
         mapWidth = (int)Math.Round(rect.width);
         mapHeight = (int)Math.Round(rect.height);
@@ -42,20 +47,20 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (updateMap && (apiKeyLast != apiKey || !Mathf.Approximately(latLast, lat) || !Mathf.Approximately(lonLast, lon) || zoomLast != zoom || mapResolutionLast != mapResolution || mapTypeLast != mapType))
+        if (updateMap && (accessTokenLast != accessToken || !Mathf.Approximately(centerLatitudeLast, centerLatitude) || !Mathf.Approximately(centerLongitudeLast, centerLongitude) || zoomLast != zoom || bearingLast != bearing || pitchLast != pitch || mapStyleLast != mapStyle || mapResolutionLast != mapResolution))
         {
             rect = gameObject.GetComponent<RawImage>().rectTransform.rect;
             mapWidth = (int)Math.Round(rect.width);
             mapHeight = (int)Math.Round(rect.height);
-            StartCoroutine(GetGoogleMap());
+            StartCoroutine(GetMapbox());
             updateMap = false;
         }
     }
 
 
-    IEnumerator GetGoogleMap()
+    IEnumerator GetMapbox()
     {
-        url = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=" + zoom + "&size=" + mapWidth + "x" + mapHeight + "&scale=" + mapResolution + "&maptype=" + mapType + "&key=" + apiKey;
+        url = "https://api.mapbox.com/styles/v1/mapbox/" + styleStr[(int)mapStyle] + "/static/" + centerLongitude + "," + centerLatitude + "," + zoom + "," + bearing + "," + pitch + "/" + mapWidth + "x" + mapHeight + "?" + "access_token=" + accessToken;
         mapIsLoading = true;
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();
@@ -68,14 +73,15 @@ public class Map : MonoBehaviour
             mapIsLoading = false;
             gameObject.GetComponent<RawImage>().texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
 
-            apiKeyLast = apiKey;
-            latLast = lat;
-            lonLast = lon;
+            accessTokenLast = accessToken;
+            centerLatitudeLast = centerLatitude;
+            centerLongitudeLast = centerLongitude;
             zoomLast = zoom;
+            bearingLast = bearing;
+            pitchLast = pitch;
+            mapStyleLast = mapStyle;
             mapResolutionLast = mapResolution;
-            mapTypeLast = mapType;
             updateMap = true;
         }
     }
-
 }
