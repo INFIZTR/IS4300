@@ -30,4 +30,18 @@ public class EventList : ScriptableObject
             eventList.Remove(thisEvent);
         }
     }
+
+    public List<EventData> searchEvents(string searchString)
+    {
+        List<EventData> searchEventList = new List<EventData>();
+        foreach (EventData thisEvent in eventList)
+        {
+            if (thisEvent.eventType.ToString().ToLower() == searchString.ToLower())
+            {
+                searchEventList.Add(thisEvent);
+            }
+        }
+
+        return searchEventList;
+    }
 }
