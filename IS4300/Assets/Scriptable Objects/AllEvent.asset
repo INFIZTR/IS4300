@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd4c1a732bbaee84ca6104c3bb958914, type: 3}
-  m_Name: OOD Study
+  m_Script: {fileID: 11500000, guid: 91e7f1d48bbef3e46a5a097ec282d2a7, type: 3}
+  m_Name: AllEvent
   m_EditorClassIdentifier: 
-  title: OOD Study
-  eventType: 0
-  Year: 2024
-  Month: 11
-  Day: 19
-  Hour: 16
-  place: 0
-  numberOfParticipants: 3
-  description: Sutdy OOD at 3rd floor in Snell.
+  eventList: []

@@ -1,11 +1,13 @@
 using UnityEngine;
 using System;
+using TMPro;
 
 public enum EventType
 {
     Study,
     Sport,
-    Entertainment
+    Entertainment,
+    Unknown
 }
 
 public enum Place
@@ -14,20 +16,72 @@ public enum Place
     CarterField,
     SquashBusters,
     MarinoCenter,
-    CurryStudentCenter
+    CurryStudentCenter,
+    RyderHall,
+    Unknown
 }
 
-[CreateAssetMenu(fileName = "New Event", menuName = "Event Data")]
-
-public class EventData : ScriptableObject
+public class EventData : MonoBehaviour
 {
     public string title;
     public EventType eventType;
-    public int Year;
-    public int Month;
-    public int Day;
-    public int Hour;
+    //public int Year;
+    //public int Month;
+    //public int Day;
+    //public int Hour;
+    public string date;
     public Place place;
-    public int numberOfParticipants;
+    public string numberOfParticipants;
     [TextArea] public string description;
+    
+    public override bool Equals(object item)
+    {
+        if (item == null || !(item is EventData))
+        {
+            return false;
+        }
+        
+        EventData other = (EventData)item;
+        return this.title == other.title;
+    }
+    
+    public static EventType GetEventType(string eventsType)
+    {
+        if (eventsType == "Study")
+        {
+            return EventType.Study;
+        } 
+        else if (eventsType == "Sport")
+        {
+            return EventType.Sport;
+        }
+        else if (eventsType == "Entertainment")
+        {
+            return EventType.Entertainment;
+        }
+        else
+        {
+            return EventType.Unknown;
+        }
+    }
+
+    public static Place GetPlace(string places)
+    {
+        if (places == "Snell Library")
+        {
+            return Place.SnellLibrary;
+        } 
+        else if (places == "Ryder")
+        {
+            return Place.RyderHall;
+        }
+        else if (places == "Carters Field")
+        {
+            return Place.CarterField;
+        }
+        else
+        {
+            return Place.Unknown;
+        }
+    }
 }
