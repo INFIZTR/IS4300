@@ -10,13 +10,15 @@ public class SearchController : MonoBehaviour
     public EventList searchedEvent;
     
     public TMP_Text searchText;
+    
+    public EventList eventList;
 
     public void Search()
     {
-        List<EventData> list = allEvent.searchEvents(searchText.text);
+        List<EventData> list = allEvent.searchEvents(searchText.text, eventList.allEvent);
         foreach (EventData eventData in list)
         {
-            searchedEvent.AddEvent(eventData);
+            searchedEvent.AddEvent(eventData, eventList.searchedEvents);
         }
     }
 }

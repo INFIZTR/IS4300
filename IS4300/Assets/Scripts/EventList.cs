@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Event List", menuName = "Event List")]
-[System.Serializable]
-public class EventList : ScriptableObject
+public class EventList : MonoBehaviour
 {
-    [SerializeField] 
-    public List<EventData> eventList = new List<EventData>();
+    public List<EventData> allEvent = new List<EventData>();
+    public List<EventData> myCreatedEvents = new List<EventData>();
+    public List<EventData> myJoinedEvents = new List<EventData>();
+    public List<EventData> searchedEvents = new List<EventData>();
     
-    public void AddEvent(EventData thisEvent)
+    public void AddEvent(EventData thisEvent, List<EventData> eventList)
     {
         if (thisEvent.title == null)
         {
@@ -20,10 +20,6 @@ public class EventList : ScriptableObject
        else if (!eventList.Contains(thisEvent))
         {
             eventList.Add(thisEvent);
-#if UNITY_EDITOR
-            EditorUtility.SetDirty(this); 
-            AssetDatabase.SaveAssets();
-#endif
         }
         else
         {
@@ -31,7 +27,7 @@ public class EventList : ScriptableObject
         }
     }
 
-    public void RemoveEvent(EventData thisEvent)
+    public void RemoveEvent(EventData thisEvent, List<EventData> eventList)
     {
         if (eventList.Contains(thisEvent))
         {
@@ -39,7 +35,7 @@ public class EventList : ScriptableObject
         }
     }
 
-    public List<EventData> searchEvents(string searchString)
+    public List<EventData> searchEvents(string searchString, List<EventData> eventList)
     {
         List<EventData> searchEventList = new List<EventData>();
         DateTime searchDate;

@@ -5,28 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Login.unity
     guid: 7ef9a7dbdfc7aa34b861745416f5d7a4
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UserProfile.unity
     guid: afe224ee57b81614db60185f7ccf8d23
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/My Hosted Events.unity
     guid: fb8195555b8ba96428ce5d3ff954a1c9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/My Joined Events.unity
     guid: be219a82ee33a7c438e2f4390d852476
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Setting.unity
     guid: da8cef8694d38c047a661d3c59026bed
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Event Search Result.unity
     guid: 2414f4783f48dda42b4020a86a089af2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CreateEvent.unity
     guid: e3cefa8973d6dbd468213ed8c0330975
   m_configObjects: {}

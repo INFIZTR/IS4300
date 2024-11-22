@@ -21,9 +21,7 @@ public enum Place
     Unknown
 }
 
-[CreateAssetMenu(fileName = "New Event", menuName = "Event")]
-[System.Serializable]
-public class EventData : ScriptableObject
+public class EventData : MonoBehaviour
 {
     [SerializeField] public string title;
     [SerializeField] public EventType eventType;

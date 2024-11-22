@@ -23,7 +23,7 @@ public class EventDisplay : MonoBehaviour
             Destroy(child.gameObject); // Clear existing buttons if any
         }
 
-        foreach (var eventSO in eventList.eventList)
+        foreach (var eventSO in eventList.myJoinedEvents)
         {
             GameObject button = Instantiate(buttonPrefab, buttonParent);
             // Assign data to child text objects
@@ -62,23 +62,14 @@ public class EventDisplay : MonoBehaviour
     
     void RemoveEvent(EventData eventSO, GameObject button)
     {
-        if (eventList == null)
-        {
-            eventList = ScriptableObject.CreateInstance<EventList>();
-            Debug.Log("createList initialized as a new EventList.");
-        }
         
         // Remove the event from the list
-        if (eventList.eventList.Contains(eventSO))
+        if (eventList.myJoinedEvents.Contains(eventSO))
         {
-            eventList.eventList.Remove(eventSO);
+            eventList.myJoinedEvents.Remove(eventSO);
             Debug.Log($"Removed event: {eventSO.title}");
         }
         
-#if UNITY_EDITOR
-        EditorUtility.SetDirty(eventList);
-        AssetDatabase.SaveAssets(); 
-#endif
 
         // Destroy the button
         Destroy(button);

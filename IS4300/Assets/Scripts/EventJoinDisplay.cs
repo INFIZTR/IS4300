@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class EventJoinDisplay : MonoBehaviour
 {
-    public EventList searchedeventList; // Assign your EventListSO here
-    public EventList myjoinedeventList; // Assign your EventListSO here
+    public EventList eventList; // Assign your EventListSO here
     public GameObject buttonPrefab; // Assign your button prefab
     public Transform buttonParent; // Assign the parent (e.g., Content object in the Scroll View)
 
@@ -24,7 +23,7 @@ public class EventJoinDisplay : MonoBehaviour
             Destroy(child.gameObject); // Clear existing buttons if any
         }
 
-        foreach (var eventSO in searchedeventList.eventList)
+        foreach (var eventSO in eventList.searchedEvents)
         {
             GameObject button = Instantiate(buttonPrefab, buttonParent);
             // Assign data to child text objects
@@ -63,19 +62,9 @@ public class EventJoinDisplay : MonoBehaviour
     
     void AddEvent(EventData eventSO, GameObject button)
     {
-        if (myjoinedeventList == null)
-        {
-            myjoinedeventList = ScriptableObject.CreateInstance<EventList>();
-            Debug.Log("createList initialized as a new EventList.");
-        }
 
-            myjoinedeventList.eventList.Add(eventSO);
+            eventList.myJoinedEvents.Add(eventSO);
             Debug.Log($"Removed event: {eventSO.title}");
-            
-#if UNITY_EDITOR
-            EditorUtility.SetDirty(myjoinedeventList);
-            AssetDatabase.SaveAssets(); 
-#endif
 
             // Destroy the button
         Destroy(button);
@@ -86,6 +75,6 @@ public class EventJoinDisplay : MonoBehaviour
 
     public void ClearSearch()
     {
-        searchedeventList.eventList.Clear();
+        eventList.searchedEvents.Clear();
     }
 }

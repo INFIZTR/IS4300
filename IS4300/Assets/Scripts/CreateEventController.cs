@@ -14,17 +14,10 @@ public class CreateEventController : MonoBehaviour
     public TMP_Text descriptionText;
     
     public EventList eventList;
-    public EventList createList;
     
     public void CreateEvent()
     {
-        if (createList == null)
-        {
-            createList = ScriptableObject.CreateInstance<EventList>();
-            Debug.Log("createList initialized as a new EventList.");
-        }
-        
-        EventData eventData = new EventData();
+        EventData eventData = gameObject.AddComponent<EventData>();
         eventData.title = titleText.text;
         if (EventData.GetEventType(eventTypeText.text) != EventType.Unknown)
         {
@@ -40,13 +33,8 @@ public class CreateEventController : MonoBehaviour
         eventData.description = descriptionText.text;
         eventData.date = dateText.text;
         
-        eventList.AddEvent(eventData);
-        createList.AddEvent(eventData);
+        eventList.AddEvent(eventData, eventList.allEvent);
+        eventList.AddEvent(eventData, eventList.myCreatedEvents);
         
-#if UNITY_EDITOR
-        EditorUtility.SetDirty(eventList);
-        EditorUtility.SetDirty(createList);
-        AssetDatabase.SaveAssets(); 
-#endif
     }
 }
