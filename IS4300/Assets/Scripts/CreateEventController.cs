@@ -13,6 +13,7 @@ public class CreateEventController : MonoBehaviour
     public TMP_Text descriptionText;
     
     public EventList eventList;
+    public EventList createList;
     
     public void CreateEvent()
     {
@@ -33,5 +34,6 @@ public class CreateEventController : MonoBehaviour
         eventData.date = dateText.text;
         
         eventList.AddEvent(eventData);
+        createList.AddEvent(eventData);
     }
 }

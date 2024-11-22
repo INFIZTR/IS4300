@@ -21,7 +21,8 @@ public enum Place
     Unknown
 }
 
-public class EventData : MonoBehaviour
+[CreateAssetMenu(fileName = "New Event", menuName = "Event")]
+public class EventData : ScriptableObject
 {
     public string title;
     public EventType eventType;
