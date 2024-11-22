@@ -31,7 +31,7 @@ public class EventDisplay : MonoBehaviour
             button.GetComponentInChildren<TMP_Text>().text = eventSO.title;
             
             // Add Yes button listener to remove the event
-            Transform widget = button.transform.Find("Host Event Widget/CancelConfirmation");
+            Transform widget = button.transform.Find("Event Widget/CancelConfirmation");
             Button yesButton = widget.Find("Yes").GetComponent<Button>();
             yesButton.onClick.AddListener(() => RemoveEvent(eventSO, button));
         }
@@ -41,7 +41,7 @@ public class EventDisplay : MonoBehaviour
     void AssignEventDataToUI(GameObject button, EventData eventSO)
     {
         // Find the parent object holding all the text components
-        Transform widget = button.transform.Find("Host Event Widget");
+        Transform widget = button.transform.Find("Event Widget");
         // Assuming TextMeshPro is used for the text components
         TMP_Text titleText = widget.transform.Find("EventTitle").GetComponent<TMP_Text>();
         TMP_Text timeText = widget.transform.Find("EventTime").GetComponent<TMP_Text>();

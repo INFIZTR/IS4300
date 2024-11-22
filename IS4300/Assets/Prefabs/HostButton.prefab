@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8756333903389937238}
   - component: {fileID: 137593758787448210}
   m_Layer: 5
-  m_Name: EventButton
+  m_Name: HostButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,7 +358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908603259507755184, guid: f76339b704eef78479f7000a44f1bb98, type: 3}
       propertyPath: m_Name
-      value: Host Event Widget
+      value: Event Widget
       objectReference: {fileID: 0}
     - target: {fileID: 4908603259507755184, guid: f76339b704eef78479f7000a44f1bb98, type: 3}
       propertyPath: m_IsActive
