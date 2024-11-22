@@ -79,6 +79,8 @@
     <Compile Include="Assets\UI\TableLayout\TableLayoutUtilities.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
+    <Compile Include="Assets\Scripts\EventController.cs" />
+    <Compile Include="Assets\Scripts\SearchController.cs" />
     <Compile Include="Assets\UI\DatePicker\Example\ExampleController.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

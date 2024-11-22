@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,9 +35,25 @@ public class EventList : ScriptableObject
     public List<EventData> searchEvents(string searchString)
     {
         List<EventData> searchEventList = new List<EventData>();
+        DateTime searchDate;
+
+        // Check if the search string is a valid date
+        bool isDateSearch = DateTime.TryParse(searchString, out searchDate);
+
         foreach (EventData thisEvent in eventList)
         {
-            if (thisEvent.eventType.ToString().ToLower() == searchString.ToLower())
+            DateTime eventDate;
+
+            // Check event type, title, place, or date
+            string a = thisEvent.title.ToLower();
+            string c = thisEvent.place.ToString().ToLower() + "\u200B";
+            string b = searchString.ToLower();
+            if (thisEvent.eventType.ToString().ToLower() + "\u200B"== searchString.ToLower() ||  
+                thisEvent.title.ToLower()== searchString.ToLower() ||
+                thisEvent.place.ToString().ToLower()+ "\u200B"== searchString.ToLower() ||
+                (isDateSearch &&
+                 DateTime.TryParse(thisEvent.date, out eventDate) &&
+                 eventDate.Date == searchDate.Date))
             {
                 searchEventList.Add(thisEvent);
             }
