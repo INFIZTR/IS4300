@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e7f1d48bbef3e46a5a097ec282d2a7, type: 3}
   m_Name: MyCreatedEvents
   m_EditorClassIdentifier: 
-  eventList: []
+  eventList:
+  - {fileID: 0}

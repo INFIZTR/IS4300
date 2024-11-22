@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Event List", menuName = "Event List")]
+[System.Serializable]
 public class EventList : ScriptableObject
 {
+    [SerializeField] 
     public List<EventData> eventList = new List<EventData>();
     
     public void AddEvent(EventData thisEvent)
@@ -17,6 +20,10 @@ public class EventList : ScriptableObject
        else if (!eventList.Contains(thisEvent))
         {
             eventList.Add(thisEvent);
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(this); 
+            AssetDatabase.SaveAssets();
+#endif
         }
         else
         {
@@ -44,10 +51,6 @@ public class EventList : ScriptableObject
         {
             DateTime eventDate;
 
-            // Check event type, title, place, or date
-            string a = thisEvent.title.ToLower();
-            string c = thisEvent.place.ToString().ToLower() + "\u200B";
-            string b = searchString.ToLower();
             if (thisEvent.eventType.ToString().ToLower() + "\u200B"== searchString.ToLower() ||  
                 thisEvent.title.ToLower()== searchString.ToLower() ||
                 thisEvent.place.ToString().ToLower()+ "\u200B"== searchString.ToLower() ||

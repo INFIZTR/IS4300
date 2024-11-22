@@ -54,6 +54,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_Instantiation.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_InputField.cs" />
+    <Compile Include="Assets\Scripts\EventJoinDisplay.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayHeader.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
@@ -737,6 +738,9 @@
     <Reference Include="Unity.2D.IK.Runtime">
       <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.EditorCoroutines.Editor">
+      <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="PsdPlugin">
       <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
     </Reference>
@@ -839,6 +843,9 @@
     <Reference Include="Unity.2D.Common.Editor">
       <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridgeDev.001">
+      <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\Unity.InternalAPIEditorBridgeDev.001.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
@@ -862,6 +869,9 @@
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
       <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Play.Publisher.Editor">
+      <HintPath>C:\Users\13741\Documents\IS4300\IS4300\Library\ScriptAssemblies\Unity.Play.Publisher.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

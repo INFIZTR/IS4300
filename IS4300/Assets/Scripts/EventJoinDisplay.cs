@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,9 +63,19 @@ public class EventJoinDisplay : MonoBehaviour
     
     void AddEvent(EventData eventSO, GameObject button)
     {
+        if (myjoinedeventList == null)
+        {
+            myjoinedeventList = ScriptableObject.CreateInstance<EventList>();
+            Debug.Log("createList initialized as a new EventList.");
+        }
 
             myjoinedeventList.eventList.Add(eventSO);
             Debug.Log($"Removed event: {eventSO.title}");
+            
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(myjoinedeventList);
+            AssetDatabase.SaveAssets(); 
+#endif
 
             // Destroy the button
         Destroy(button);

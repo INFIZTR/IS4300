@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor;
 
 public class CreateEventController : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class CreateEventController : MonoBehaviour
     
     public void CreateEvent()
     {
+        if (createList == null)
+        {
+            createList = ScriptableObject.CreateInstance<EventList>();
+            Debug.Log("createList initialized as a new EventList.");
+        }
+        
         EventData eventData = new EventData();
         eventData.title = titleText.text;
         if (EventData.GetEventType(eventTypeText.text) != EventType.Unknown)
@@ -35,5 +42,11 @@ public class CreateEventController : MonoBehaviour
         
         eventList.AddEvent(eventData);
         createList.AddEvent(eventData);
+        
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(eventList);
+        EditorUtility.SetDirty(createList);
+        AssetDatabase.SaveAssets(); 
+#endif
     }
 }

@@ -22,18 +22,19 @@ public enum Place
 }
 
 [CreateAssetMenu(fileName = "New Event", menuName = "Event")]
+[System.Serializable]
 public class EventData : ScriptableObject
 {
-    public string title;
-    public EventType eventType;
+    [SerializeField] public string title;
+    [SerializeField] public EventType eventType;
     //public int Year;
     //public int Month;
     //public int Day;
     //public int Hour;
-    public string date;
-    public Place place;
-    public string numberOfParticipants;
-    [TextArea] public string description;
+    [SerializeField] public string date;
+    [SerializeField] public Place place;
+    [SerializeField] public string numberOfParticipants;
+    [SerializeField] [TextArea] public string description;
     
     public override bool Equals(object item)
     {
