@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e7f1d48bbef3e46a5a097ec282d2a7, type: 3}
   m_Name: MyJoinedEvents
   m_EditorClassIdentifier: 
-  eventList:
-  - {fileID: 11400000, guid: b5ff0c18dcefbbd47817debb656a5495, type: 2}
+  eventList: []
